@@ -4,7 +4,7 @@ import {
   calculateTax,
   calculateTotal,
   CartItem,
-} from "../cartUtils";
+} from "../cartUtils.js";
 
 
 
@@ -71,12 +71,12 @@ describe("calculateTax", () => {
 
 describe("calculateTotal", () => {
 it("calculates totals for a single item", () => {
-  const items = [{ price: 10, quantity: 2 }];
+  const items: CartItem[] = [{ price: 10, quantity: 2 }];
   expect(calculateTotal(items, 0, 0).total).toBe(20);
 });
 
 it("calculates totals for multiple items", () => {
-  const items = [
+  const items: CartItem[] = [
     { price: 10, quantity: 1 },
     { price: 20, quantity: 1 }
   ];
@@ -84,7 +84,7 @@ it("calculates totals for multiple items", () => {
 });
 
 it("applies discount before calculating tax", () => {
-  const items = [{ price: 100, quantity: 1 }];
+  const items: CartItem[] = [{ price: 100, quantity: 1 }];
   expect(calculateTotal(items, 10, 10).total).toBe(99);
 });
 
@@ -94,12 +94,12 @@ it("excludes tax-exempt items from tax calculation", () => {
 });
 
 it("handles empty cart", () => {
-  const items = [];
+  const items: CartItem[] = [];
   expect(() => calculateTotal(items, 0, 0)).toThrow("Total cannot be zero");
 });
 
 it("throws for invalid quantity", () => {
-  const items = [{ price: 10, quantity: 0 }];
+  const items: CartItem[] = [{ price: 10, quantity: 0 }];
   expect(() => calculateTotal(items, 0, 0)).toThrow("Quantity must be a positive integer");
 });
 
