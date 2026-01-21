@@ -81,9 +81,9 @@ export function calculateTotal(items: CartItem[], discountPercent = 0, taxRate =
   const total = newSub + tax;
 
   return {
-    subtotal: Math.round(sub * 100) / 100,
-    discount: Math.round(disc * 100) / 100,
-    tax: Math.round(tax * 100) / 100,
+    subtotal: sub,
+    discount: disc,
+    tax: tax,
     total: Math.round(total * 100) / 100,
   };
 }
